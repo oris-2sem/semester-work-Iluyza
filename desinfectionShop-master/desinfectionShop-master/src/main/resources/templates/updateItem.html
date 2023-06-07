@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img src="img/logo.png" alt=""></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__cart__price">item: <span>$150.00</span></div>
+    </div>
+    <div class="humberger__menu__widget">
+        <div class="header__top__right__auth">
+            <a href="/auth/login"><i class="fa fa-user"></i> Войти</a>
+        </div>
+    </div>
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a href="/">Главная</a></li>
+            <li><a href="/catalog/page/1">Магазин</a></li>
+            <li><a href="./contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="humberger__menu__contact">
+        <ul>
+            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+            <li>Free Shipping for all Order of $99</li>
+        </ul>
+    </div>
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="/"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/catalog/page/1">Магазин</a></li>
+                        <li><a href="./contact.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->
+
+<!-- Hero Section Begin -->
+
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <h4>Детали</h4>
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <form class="updateItemForm" id="updateItemForm" method="post"
+                          th:object="${itemCreateDTO}" enctype="multipart/form-data">
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Название</p>
+                                <input type="text"  name="name" id="name" th:value="${itemCreateDTO.getName()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Цена</p>
+                                <input type="text" name="cost" id="cost" th:value="${itemCreateDTO.getCost()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Количество</p>
+                                <input type="text" name="amount" id="amount" th:value="${itemCreateDTO.getAmount()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Страна производитель</p>
+                                <input type="text" name="country" id="country" th:value="${itemCreateDTO.getCountry()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Химические состав</p>
+                                <input type="text" name="chemicalComposition" id="chemicalComposition"
+                                       th:value="${itemCreateDTO.getChemicalComposition()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <div class="input-control">
+                                <p>Описание</p>
+                                <input type="text" name="description" id="description" th:value="${itemCreateDTO.getDescription()}">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <p>Список вредителей</p>
+                            <input class="custom-checkbox" type="checkbox" id="cockroach" name="pests"
+                                   value="Тараканы" th:checked="${itemCreateDTO.getPests().contains('Тараканы')}">
+                            <label for="cockroach">Тараканы</label>
+                            <input class="custom-checkbox" type="checkbox" id="bug" name="pests" value="Клопы"
+                                   th:checked="${itemCreateDTO.getPests().contains('Клопы')}">
+                            <label for="bug">Клопы</label>
+                            <input class="custom-checkbox" type="checkbox" id="tick" name="pests" value="Клещи"
+                                   th:checked="${itemCreateDTO.getPests().contains('Клещи')}">
+                            <label for="tick">Клещи</label>
+                            <input class="custom-checkbox" type="checkbox" id="mosquito" name="pests" value="Комары и их личинки"
+                                   th:checked="${itemCreateDTO.getPests().contains('Комары и их личинки')}">
+                            <label for="mosquito">Комары и их личинки</label>
+                            <input class="custom-checkbox" type="checkbox" id="fly larva" name="pests" value="Личинки мух"
+                                   th:checked="${itemCreateDTO.getPests().contains('Личинки мух')}">
+                            <label for="fly larva">Личинки мух</label>
+                            <input class="custom-checkbox" type="checkbox" id="ant" name="pests" value="Муравьи"
+                                   th:checked="${itemCreateDTO.getPests().contains('Муравьи')}">
+                            <label for="ant">Муравьи</label>
+                            <input class="custom-checkbox" type="checkbox" id="fleas" name="pests" value="Блохи"
+                                   th:checked="${itemCreateDTO.getPests().contains('Блохи')}">
+                            <label for="fleas">Блохи</label>
+                            <input class="custom-checkbox" type="checkbox" id="fly" name="pests" value="Мухи"
+                                   th:checked="${itemCreateDTO.getPests().contains('Мухи')}">
+                            <label for="fly">Мухи</label>
+                            <input class="custom-checkbox" type="checkbox" id="rats" name="pests" value="Крысиные и чесоточные"
+                                   th:checked="${itemCreateDTO.getPests().contains('Крысиные и чесоточные')}">
+                            <label for="rats">Крысы и чесоточные</label>
+                            <input class="custom-checkbox" type="checkbox" id="lice" name="pests" value="Вши"
+                                   th:checked="${itemCreateDTO.getPests().contains('Вши')}">
+                            <label for="lice">Вши</label>
+                        </div>
+                        <div class="file__input">
+                            <input type="file" name="itemImage" accept="image/png, image/jpg, image/jpeg"
+                                   id="input__file" class="site-btn"/>
+                            <!--                                <label for="input__file" class="input__file-button">-->
+                            <!--                                    <span class="add-btn">Загрузить файл</span>-->
+                            <!--                                </label>-->
+                        </div>
+                        <div class="checkout__button">
+                            <button type="submit" onclick="return validateInputs()" name="submit" id="submit"
+                                    class="site-btn">Обновить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="checkout__button">
+</div>
+<!-- Checkout Section End -->
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/deleteItem.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+
+
+</body>
+
+</html>

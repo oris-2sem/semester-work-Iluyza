@@ -1,0 +1,6 @@
+Xexception:
+  message:
+    no-such-account: Аккаунт с ID %s не найден
+    no-such-item: Товар с ID %s не найден
+    no-such-order: Заказ с ID %s не найден
+    no-such-pest: Насемокого с ID %s не найдено
